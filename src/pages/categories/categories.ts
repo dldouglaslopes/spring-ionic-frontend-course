@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { CategoryService } from '../../services/domain/category.services';
-import { CategoryDTO } from '../../models/Category.dto';
+import { CategoryService } from '../../services/domain/category.service';
+import { CategoryDTO } from '../../models/category.dto';
 
 /**
  * Generated class for the CategoriesPage page.
@@ -17,7 +17,7 @@ import { CategoryDTO } from '../../models/Category.dto';
 })
 export class CategoriesPage {
 
-  items: CategoryDTO[]
+  items: CategoryDTO[];
 
   constructor(
     public navCtrl: NavController, 
@@ -30,9 +30,7 @@ export class CategoriesPage {
         .subscribe(response => {
           this.items = response;   
         },
-        error => {
-          console.log(error);
-        });
+        error => {});
   }
 
 }

@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs/Rx";
-import { CategoryDTO } from "../../models/Category.dto";
+import { CategoryDTO } from "../../models/category.dto";
 import { API_CONFIG } from "../../config/api.config";
 
 @Injectable()
