@@ -5,6 +5,8 @@ import { StateService } from '../../services/domain/state.service';
 import { CityService } from '../../services/domain/city.service';
 import { StateDTO } from '../../models/state.dto';
 import { CityDTO } from '../../models/city.dto';
+import { ClientService } from '../../services/domain/client.service';
+import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 
 @IonicPage()
 @Component({
@@ -22,7 +24,9 @@ export class SignupPage {
     public navParams: NavParams,
     public formBuilder: FormBuilder,
     public stateService : StateService,
-    public cityService : CityService) {
+    public cityService : CityService,
+    public clientService : ClientService,
+    public alertCtrl : AlertController) {
 
     this.formGroup = this.formBuilder.group({
       name: ['Joaquim', [Validators.required, Validators.minLength(5), Validators.maxLength(120)]],
@@ -66,6 +70,28 @@ export class SignupPage {
   }
 
   signupUser() {
-    console.log('enviou o form');
+    this.clientService.insert(this.formGroup.value)
+        .subscribe(response => {
+          this.showInsertOk();
+        },
+        error => {});
+  }
+
+  showInsertOk() {
+    let alert = this.alertCtrl.create({
+      title: 'Success!',
+      message: 'Registration done',
+      enableBackdropDismiss: false, 
+      buttons: [
+        {
+          text: 'Ok',
+          handler: () => {
+            this.navCtrl.pop();
+          }
+        }
+      ]
+    });
+
+    alert.present();
   }
 }
