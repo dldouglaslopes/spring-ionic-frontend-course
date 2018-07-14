@@ -26,7 +26,7 @@ export class CategoriesPage {
         error => {});
   }
 
-  showProducts() {
-    this.navCtrl.push('ProductsPage');
+  showProducts(category_id : string) {
+    this.navCtrl.push('ProductsPage', {category_id : category_id});
   }
 }
