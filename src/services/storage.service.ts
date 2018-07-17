@@ -20,8 +20,7 @@ export class StorageService {
         if (obj == null) {
             localStorage.removeItem(STORAGE_KEYS.localUser);
         } else {
-            localStorage.setItem(STORAGE_KEYS.localUser, 
-                                JSON.stringify(obj));    
+            localStorage.setItem(STORAGE_KEYS.localUser, JSON.stringify(obj));    
         }
     }
 
